@@ -27,7 +27,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-import org.apache.maven.surefire.report.PojoStackTraceWriter;
+import org.apache.maven.surefire.report.LegacyPojoStackTraceWriter;
 import org.apache.maven.surefire.report.RunListener;
 import org.apache.maven.surefire.report.SimpleReportEntry;
 import org.apache.maven.surefire.report.StackTraceWriter;
@@ -243,7 +243,7 @@ final class RunListenerAdapter
     {
         String className = getClassName( testIdentifier );
         String methodName = getMethodName( testIdentifier ).orElse( "" );
-        return new PojoStackTraceWriter( className, methodName, throwable );
+        return new LegacyPojoStackTraceWriter( className, methodName, throwable );
     }
 
     private String getClassName( TestIdentifier testIdentifier )
